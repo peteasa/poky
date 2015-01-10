@@ -52,6 +52,9 @@ def package_qa_get_machine_dict():
             "darwin9" : { 
                         "arm" :       (40,     0,    0,          True,          32),
                       },
+            "e-os" :  {
+                        "epiphany":   ( 4643,  0,    0,          True,          32),
+                      },
             "linux" : { 
                         "aarch64" :   (183,    0,    0,          True,          64),
                         "aarch64_be" :(183,    0,    0,          False,         64),
@@ -444,6 +447,10 @@ def package_qa_check_arch(path,name,d, elf, messages):
     target_arch = d.getVar('TARGET_ARCH', True)
     provides = d.getVar('PROVIDES', True)
     bpn = d.getVar('BPN', True)
+
+    # FIXME: epiphany cross compile confuses this check
+    if (target_os == 'e-os'):
+        return
 
     # FIXME: Cross package confuse this check, so just skip them
     for s in ['cross', 'nativesdk', 'cross-canadian']:
