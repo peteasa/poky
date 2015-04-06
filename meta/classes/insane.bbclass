@@ -52,6 +52,9 @@ def package_qa_get_machine_dict():
             "darwin9" : { 
                         "arm" :       (40,     0,    0,          True,          32),
                       },
+            "elf" :  {
+                        "epiphany":   ( 4643,  0,    0,          True,          32),
+                      },
             "linux" : { 
                         "aarch64" :   (183,    0,    0,          True,          64),
                         "aarch64_be" :(183,    0,    0,          False,         64),
